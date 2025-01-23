@@ -1,4 +1,4 @@
-# My Notes App 📓
+# Welcome to MHQ 📓
 
 ------
 
@@ -15,4 +15,6 @@ This project will use the following tech stack:
 
 ## What is this project about?
 
-More information coming soon 🛠
+MHQ, also known as Memo Headquaters, is an app that allows users to write notes and categorize them neatly. The priority of this project was to create an app that was not only simple to use, but also aesthetically pleasing to look at.
+
+_*This project is still under construction*_ 🛠
