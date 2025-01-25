@@ -10,6 +10,7 @@ This project will use the following tech stack:
 <a href="#"><img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6.svg?logo=css3&logoColor=white"></a>
 <a href="#"><img alt="React" src="https://img.shields.io/badge/React-20232a.svg?logo=react&logoColor=%2361DAFB"></a>
 <a href="#"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC.svg?logo=typescript&logoColor=white"></a> 
+<a href="#"><img alt="Botstrap" src="https://img.shields.io/badge/Bootstrap-v5.3.0-blue"></a>
 
 ------
 
