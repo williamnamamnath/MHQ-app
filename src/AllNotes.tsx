@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Badge, Button, Card, Col, Form, Row, Stack } from "react-bootstrap";
+import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Tag } from "./App";
@@ -8,6 +8,8 @@ import styles from "./AllNotes.module.css";
 type NoteListProps = {
     availableTags: Tag[]
     notes: NotePreview[]
+    onDeleteTag: (id: string) => void
+    onUpdateTag: (id: string, label: string) => void
 }
 
 type NotePreview = {
@@ -16,10 +18,19 @@ type NotePreview = {
     id: string
 }
 
-export function AllNotes({ availableTags, notes }: NoteListProps) {
+type EditTagsModalProps = {
+    availableTags: Tag[]
+    show: boolean
+    handleClose: () => void
+    onDeleteTag: (id: string) => void
+    onUpdateTag: (id: string, label: string) => void
+}
+
+export function AllNotes({ availableTags, notes, onUpdateTag, onDeleteTag }: NoteListProps) {
 
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const [title, setTitle] = useState("");
+    const [editTagsModalIsOpen, setEditTagsModalIsOpen] = useState(false);
 
     const filteredNotes = useMemo(() => {
         return notes.filter(note => {
@@ -36,7 +47,7 @@ export function AllNotes({ availableTags, notes }: NoteListProps) {
                     <Link to="/new">
                     <Button>New Note</Button>
                     </Link>
-                    <Button variant="secondary">My Tags</Button> 
+                    <Button onClick={() => setEditTagsModalIsOpen(true)} variant="secondary">My Tags</Button> 
                 </Stack>
             </Col>
         </Row>
@@ -72,6 +83,7 @@ export function AllNotes({ availableTags, notes }: NoteListProps) {
                 </Col>
             ))}
         </Row>
+        <EditTagsModal show={editTagsModalIsOpen} handleClose={() => setEditTagsModalIsOpen(false)} availableTags={availableTags} onUpdateTag={onUpdateTag} onDeleteTag={onDeleteTag} />
         </>
     )
 }
@@ -91,4 +103,30 @@ function NoteCard({ id, title, tags }: NotePreview) {
             </Stack>
         </Card.Body>
     </Card>
+}
+
+function EditTagsModal({ availableTags, handleClose, show, onUpdateTag, onDeleteTag }: EditTagsModalProps) {
+    return (
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+            <Modal.Title>Edit Tags</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Stack gap={2}>
+                        {availableTags.map(tag => (
+                            <Row key={tag.id}>
+                                <Col>
+                                <Form.Control type="text" value={tag.label} onChange={e => onUpdateTag(tag.id, e.target.value)} />
+                                </Col>
+                                <Col xs="auto">
+                                <Button onClick={() => onDeleteTag(tag.id)} variant="outline-danger">X</Button>
+                                </Col>
+                            </Row>
+                        ))}
+                    </Stack>
+                </Form>
+                </Modal.Body>
+        </Modal>
+    )
 }
