@@ -19,6 +19,8 @@
 
 ## What is this project about?
 
-MHQ, also known as Memo Headquaters, is an app that allows users to write notes and categorize them neatly. The priority of this project was to create an app that was not only simple to use, but also aesthetically pleasing to look at. This project is inspired by [Web Dev Simplified's tutorial](https://www.youtube.com/watch?v=j898RGRw0b4).
+MHQ, also known as Memo Headquaters, is an app that allows users to write notes and categorize them neatly. The priority of this project was to create an app that is simple to use, but and easy to manipulate them. This project is inspired by [Web Dev Simplified's tutorial](https://www.youtube.com/watch?v=j898RGRw0b4).
+
+![Temporary Home Page](https://github.com/user-attachments/assets/16f40cba-a929-4252-a1e9-2078370f31d3)
 
 _*This project is still under construction*_ 🛠
