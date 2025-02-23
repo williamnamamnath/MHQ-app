@@ -28,7 +28,7 @@ export function NoteContent({ onSubmit, onAddTag, availableTags, title="", markd
             tags: selectedTags
         });
 
-        nav("..")
+        nav("/notes")
     }
 
     return (
@@ -72,7 +72,9 @@ export function NoteContent({ onSubmit, onAddTag, availableTags, title="", markd
                     </Form.Group>
 
                     <Stack direction="horizontal" gap={2}>
-                        <Button type="submit" variant="primary">Save</Button>
+                        <Button onClick={() => {
+                            window.alert(`${title} has been created!`)
+                        }} type="submit" variant="primary">Save</Button>
                         <Link to="/notes">
                         <Button type="button" variant="outline-danger">Cancel</Button>
                         </Link>

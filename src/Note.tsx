@@ -1,11 +1,17 @@
 import { Badge, Button, Col, Row, Stack } from "react-bootstrap";
 import { useNote } from "./NoteLayout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
+type NoteProps = {
+    onDelete: (id: string) => void
+}
 
-export function Note() {
+export function Note({ onDelete }: NoteProps) {
+
     const note = useNote();
+    const navigate = useNavigate();
+    
 
     return (
         <>
@@ -26,7 +32,11 @@ export function Note() {
                     <Link to={`/${note.id}/edit`}>
                     <Button className="primary">Edit</Button>
                     </Link>
-                    <Button variant="outline-danger">Delete</Button> 
+                    <Button onClick={() => {
+                        onDelete(note.id)
+                        navigate("/notes")
+                        window.alert(`"${note.title}" has been deleted. You'll be redirected to the home page.`)
+                    }} variant="outline-danger">Delete</Button> 
                     <Link to="/notes">
                     <Button variant="outline-secondary">Back</Button> 
                     </Link>
