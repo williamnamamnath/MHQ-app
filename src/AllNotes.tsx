@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
-import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Tag } from "./App";
+
+import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from "react-bootstrap";
 import styles from "./AllNotes.module.css";
 
 type NoteListProps = {
@@ -34,7 +35,8 @@ export function AllNotes({ availableTags, notes, onUpdateTag, onDeleteTag }: Not
 
     const filteredNotes = useMemo(() => {
         return notes.filter(note => {
-            return (title === "" || note.title.toLowerCase().includes(title.toLowerCase())) && (selectedTags.length === 0 || selectedTags.every(tag => note.tags.some(noteTag => noteTag.id === tag.id)))
+            return (title === "" || note.title.toLowerCase().includes(title.toLowerCase())) 
+            && (selectedTags.length === 0 || selectedTags.every(tag => note.tags.some(noteTag => noteTag.id === tag.id)))
         })
     }, [title, selectedTags, notes])
 

@@ -1,7 +1,8 @@
-import { Badge, Button, Col, Row, Stack } from "react-bootstrap";
-import { useNote } from "./NoteLayout";
 import { Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { useNote } from "./NoteLayout";
+
+import { Badge, Button, Col, Row, Stack } from "react-bootstrap";
 
 type NoteProps = {
     onDelete: (id: string) => void
@@ -25,8 +26,8 @@ export function Note({ onDelete }: NoteProps) {
                 ))}
                 </Stack>
             )}
-
             </Col>
+            
             <Col xs="auto">
                 <Stack gap={2} direction="horizontal">
                     <Link to={`/${note.id}/edit`}>

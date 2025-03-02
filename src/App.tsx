@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css"
 import { EditNote } from "./EditNote"
 import { Container } from "react-bootstrap"
 import { Navigate, Route, Routes } from "react-router-dom"
@@ -10,6 +9,8 @@ import { Home } from "./Home"
 import { AllNotes } from "./AllNotes"
 import { NoteLayout } from "./NoteLayout"
 import { Note } from "./Note"
+
+import "bootstrap/dist/css/bootstrap.min.css"
 
 export type Note = {
   id: string
@@ -43,7 +44,8 @@ function App() {
 
   const notesWithTags = useMemo(() => {
     return notes.map(note => {
-      return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id)) }
+      return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id)) 
+      }
     })
   }, [notes, tags])
 

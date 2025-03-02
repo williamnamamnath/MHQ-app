@@ -1,10 +1,10 @@
 import { FormEvent, useRef, useState } from "react";
-import { Button, Col, Form, Row, Stack } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import CreatableReactSelect from "react-select/creatable";
 import { NoteData, Tag } from "./App";
 import { v4 as uuidV4 } from "uuid"
 
+import { Button, Col, Form, Row, Stack } from "react-bootstrap";
 
 type NoteFormProps = {
     onSubmit: (data: NoteData) => void
@@ -40,7 +40,10 @@ export function NoteContent({ onSubmit, onAddTag, availableTags, title="", markd
                         <Col>
                             <Form.Group controlId="title">
                                 <Form.Label className="fw-bold">Title</Form.Label>
-                                <Form.Control ref={titleRef} required defaultValue={title} />
+                                <Form.Control 
+                                ref={titleRef} 
+                                required 
+                                defaultValue={title} />
                             </Form.Group>
                         </Col>
 
@@ -68,13 +71,18 @@ export function NoteContent({ onSubmit, onAddTag, availableTags, title="", markd
 
                     <Form.Group controlId="markdown" className="mb-3">
                         <Form.Label> </Form.Label>
-                        <Form.Control ref={markdownRef} required as="textarea" rows={10} defaultValue={markdown} />
+                        <Form.Control 
+                        ref={markdownRef} 
+                        required as="textarea" 
+                        rows={10} 
+                        defaultValue={markdown} />
                     </Form.Group>
 
                     <Stack direction="horizontal" gap={2}>
                         <Button onClick={() => {
                             window.alert(`${title} has been created!`)
                         }} type="submit" variant="primary">Save</Button>
+                        
                         <Link to="/notes">
                         <Button type="button" variant="outline-danger">Cancel</Button>
                         </Link>

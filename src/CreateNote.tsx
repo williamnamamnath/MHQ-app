@@ -12,7 +12,11 @@ export function CreateNote({ onSubmit, onAddTag, availableTags }: NewNoteProps) 
     return (
         <>
         <h1 className="mb-5">Create a New Note</h1>
-        <NoteContent onSubmit={onSubmit} onAddTag={onAddTag} availableTags={availableTags} />
+        
+        <NoteContent 
+        onSubmit={onSubmit} 
+        onAddTag={onAddTag} 
+        availableTags={availableTags} />
         </>
     )
 } 
